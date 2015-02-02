@@ -1,5 +1,6 @@
 using Table
-using Base.Test
+using FactCheck
 
+# FactCheck.setstyle(:compact)
 # write your own tests here
-@test 1 == 1
+include("box/box.jl")
