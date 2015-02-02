@@ -1,0 +1,3 @@
+# Table
+
+[![Build Status](https://travis-ci.org/cpritcha/Table.jl.svg?branch=master)](https://travis-ci.org/cpritcha/Table.jl)
