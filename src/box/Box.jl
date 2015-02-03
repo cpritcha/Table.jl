@@ -16,4 +16,11 @@ immutable Box{T}
     end
 end
 
-typealias Boxes{T} Set{Box{T}}
+# type Boxes{T}
+#   b::Vector{Box{T}}
+# end
+# length(b::Boxes) = length(b.b)
+# start(b::Boxes) = start(b.b)
+# next(b::Boxes, st) = next(b.b, st)
+# done(b::Boxes, st) = done(b.b, st)
+
