@@ -7,7 +7,7 @@ function shatterinto{T <: Number}(r1::Range{T}, r2::Range{T})
   ibox = intersect(_box(r1), box)
 
   if isnull(ibox)
-    return [box]
+    return [r2]
   else
     ibox = get(ibox)
   end
@@ -18,29 +18,29 @@ function shatterinto{T <: Number}(r1::Range{T}, r2::Range{T})
   hasrightspace  = xmax(box) > xmax(ibox)
   hasleftspace   = xmin(box) < xmin(ibox)
 
-  println("\nshattering...")
+#   println("\nshattering...")
   res = Range{T}[]
   # place top
   if hastopspace
-    print("top")
+#     print("top")
     p1, p2 = Point(xmin(box), ymax(ibox)), Point(xmax(box), ymax(box))
     push!(res, Range(Box{T}(p1, p2), refid))
   end
   # place bottom
   if hasbottomspace
-    print("bottom")
+#     print("bottom")
     p1, p2 = Point(xmin(box), ymin(box)), Point(xmax(box), ymin(ibox))
     push!(res, Range(Box{T}(p1, p2), refid))
   end
   # place right
   if hasrightspace
-    print("right")
+#     print("right")
     p1, p2 = Point(xmax(ibox), ymin(ibox)), Point(xmax(box), ymax(ibox))
     push!(res, Range(Box{T}(p1, p2), refid))
   end
   # place left
   if hasleftspace
-    print("left")
+#     print("left")
     p1, p2 = Point(xmin(box), ymin(ibox)), Point(xmin(ibox), ymax(ibox))
     push!(res, Range(Box{T}(p1, p2), refid))
   end
@@ -52,9 +52,9 @@ function push{T}(layout::Layout{T}, newrange::Range{T})
   newlayout = Range{T}[]
   i = 1
   for range in layout
-    println("box $i")
+#     println("box $i")
     if intersects(_box(newrange), _box(range))
-      println("\tintersects box")
+#       println("\tintersects box")
       pieces = shatterinto(newrange, range)
       for piece in pieces
         push!(newlayout, piece)

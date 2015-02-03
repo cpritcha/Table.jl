@@ -13,8 +13,9 @@ include("box/oper.jl")
 export xmin, xmax, ymin, ymax,
   contains, intersects, intersect
 
+import Base: ==
 include("range/oper.jl")
-export box, refid, shatterinto, push
+export box, refid, shatterinto, push, ==
 
 import Compose: compose, context, fill, rectangle, UnitBox
 include("box/plot.jl")
