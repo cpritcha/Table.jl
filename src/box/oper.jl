@@ -1,5 +1,6 @@
 isequal(box1::Box, box2::Box) = box1 == box2
 
+size(box::Box) = (box.p2.y - box.p1.y, box.p2.x - box.p1.x)
 xmax{T}(box::Box{T}) = box.p2.x
 ymax{T}(box::Box{T}) = box.p2.y
 xmin{T}(box::Box{T}) = box.p1.x
@@ -8,6 +9,11 @@ ymin{T}(box::Box{T}) = box.p1.y
 function contains(box::Box, p::Point)
   return (xmin(box) < p.x) && (ymin(box) < p.y) &&
          (xmax(box) > p.x) && (ymax(box) > p.y)
+end
+
+function topleftcontains(box::Box, p::Point)
+  return (xmin(box) <= p.x) && (ymin(box) <= p.y) &&
+         (xmax(box) >  p.x) && (ymax(box) >  p.y)
 end
 
 function intersects{T}(box1::Box{T}, box2::Box{T})

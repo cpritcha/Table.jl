@@ -52,9 +52,7 @@ function push{T}(layout::Layout{T}, newrange::Range{T})
   newlayout = Range{T}[]
   i = 1
   for range in layout
-#     println("box $i")
     if intersects(_box(newrange), _box(range))
-#       println("\tintersects box")
       pieces = shatterinto(newrange, range)
       for piece in pieces
         push!(newlayout, piece)

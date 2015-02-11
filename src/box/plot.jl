@@ -28,7 +28,7 @@ function rectangle(vbox::Matrix{Float64}, inset::Float64=0.2)
     return rectangle(xmin, ymin, width, height)
 end
 
-function plot(boxes::Boxes, inset::Float64=0.05)
+function plot(boxes::Vector{Box}, inset::Float64=0.05)
     coords = _tovec(boxes)
     bounds = _viewbounds(coords)
     rects = rectangle(coords, inset)

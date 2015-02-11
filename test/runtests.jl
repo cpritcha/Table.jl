@@ -1,4 +1,5 @@
-using Table
+using Tables
+using Formatting
 using FactCheck
 
 # FactCheck.setstyle(:compact)
@@ -18,5 +19,8 @@ r4 = Range(box4, 4)
 r5 = Range(box5, 5)
 r6 = Range(box6, 6)
 
-include("box/box.jl")
+include("box.jl")
 include("range.jl")
+
+include("general/examples.jl")
+include("html/html.jl")
