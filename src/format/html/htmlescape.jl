@@ -1,5 +1,15 @@
 immutable HTML
    s::String
+
+  function HTML(s::String)
+    return new(s)
+  end
+end
+
+function HTML(tbl::Table)
+  buf = IOBuffer()
+  render(buf, HTMLCell, HTMLStyleElement, tbl)
+  return HTML(takebuf_string(buf))
 end
 
 writemime(io::IO, ::MIME"text/html", html::HTML) = print(io, html.s)
